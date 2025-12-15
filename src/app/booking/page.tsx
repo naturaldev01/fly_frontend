@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { 
@@ -30,7 +30,20 @@ interface PassengerForm {
   nationality: string;
 }
 
-export default function BookingPage() {
+// Loading component
+function BookingLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-16 h-16 rounded-full border-4 border-brand-200 border-t-brand-500 animate-spin mx-auto" />
+        <p className="mt-4 text-brand-600">Loading booking...</p>
+      </div>
+    </div>
+  );
+}
+
+// Main booking content component
+function BookingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { formatPrice, t, locale } = useLocale();
@@ -592,3 +605,11 @@ function StepIndicator({
   );
 }
 
+// Main export with Suspense boundary
+export default function BookingPage() {
+  return (
+    <Suspense fallback={<BookingLoading />}>
+      <BookingContent />
+    </Suspense>
+  );
+}
