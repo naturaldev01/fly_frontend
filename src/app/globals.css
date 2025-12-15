@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-outfit: 'Outfit', system-ui, sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --brand-primary: #006069;
+  --brand-dark: #004a51;
+  --brand-light: #008080;
+}
+
+body {
+  font-family: var(--font-outfit);
+  background: linear-gradient(180deg, #faf9f6 0%, #f5f4f0 50%, #e6f3f4 100%);
+  min-height: 100vh;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-xl border border-brand-100/50 shadow-brand rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 text-white font-semibold 
+           py-3 px-6 rounded-xl shadow-brand
+           hover:bg-brand-600 
+           transform hover:scale-[1.02] transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-brand-500 font-semibold 
+           py-3 px-6 rounded-xl border-2 border-brand-200
+           hover:bg-brand-50 hover:border-brand-300
+           transform hover:scale-[1.02] transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-brand-500 font-medium py-2 px-4 rounded-lg
+           hover:bg-brand-50 transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200 
+           bg-white
+           focus:border-brand-400 focus:ring-4 focus:ring-brand-100
+           transition-all duration-200 outline-none;
+  }
+
+  .flight-card {
+    @apply glass-card p-6 
+           hover:shadow-brand-lg hover:border-brand-200
+           transition-all duration-300 cursor-pointer;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-4xl font-bold text-brand-900;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f4f0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #006069, #008080);
+  border-radius: 10px;
+}
+
+/* Animated background elements */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(0, 96, 105, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 128, 128, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(201, 162, 39, 0.03) 0%, transparent 30%);
+}
+
+/* Decorative shapes */
+.shape-blob {
+  position: absolute;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  filter: blur(60px);
+  opacity: 0.15;
+  animation: blob-morph 15s ease-in-out infinite;
+}
+
+.shape-blob-1 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #006069, #008080);
+  top: -150px;
+  right: -100px;
+}
+
+.shape-blob-2 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #c9a227, #e8d48a);
+  bottom: -100px;
+  left: -100px;
+  animation-delay: -7s;
+}
+
+@keyframes blob-morph {
+  0%, 100% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  50% { 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(45deg) scale(1.05);
+  }
+}
+
+/* Hero section gradient overlay */
+.hero-overlay {
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 96, 105, 0.95) 0%, 
+    rgba(0, 74, 81, 0.9) 50%,
+    rgba(0, 96, 105, 0.95) 100%
+  );
+}
+
+/* Premium card effect */
+.premium-card {
+  background: linear-gradient(145deg, #ffffff 0%, #faf9f6 100%);
+  box-shadow: 
+    0 4px 6px rgba(0, 96, 105, 0.05),
+    0 10px 20px rgba(0, 96, 105, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Gold accent line */
+.gold-accent {
+  background: linear-gradient(90deg, transparent, #c9a227, transparent);
+  height: 2px;
+}
